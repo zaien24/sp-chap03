@@ -10,6 +10,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import spring.AlreadyExistingMemberException;
 import spring.ChangePasswordService;
 import spring.IdPasswordNotMatchingException;
+import spring.MemberListPrinter;
 import spring.MemberNotFoundException;
 import spring.MemberRegisterService;
 import spring.RegisterRequest;
@@ -35,6 +36,9 @@ public class MainForSpring {
 				continue;
 			} else if (command.startsWith("change ")) {
 				processChangeCommand(command.split(" "));
+				continue;
+			} else if (command.equals("list")) {
+				processListCommand();
 				continue;
 			}
 			printHelp();
@@ -91,4 +95,12 @@ public class MainForSpring {
 		System.out.println("change 이메일 현재비번 변경비번");
 		System.out.println();
 	}
+	
+	
+	private static void processListCommand() {
+		MemberListPrinter listPrinter =
+				ctx.getBean("listPrinter", MemberListPrinter.class);
+		listPrinter.printAll();
+	}
+	
 }
