@@ -25,4 +25,9 @@
 		<property name="memberDao" ref="memberDao" />
 		<property name="printer" ref="memberPrinter" />
 	</bean>
+	
+	<bean id="versionPrinter" class="spring.VersionPrinter">
+		<property name="majorVersion" value="4" />
+		<property name="minorVersion" value="1" />
+	</bean>
 </beans>
