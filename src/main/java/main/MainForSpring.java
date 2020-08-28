@@ -22,7 +22,9 @@ public class MainForSpring {
 	private static ApplicationContext ctx = null;
 	
 	public static void main(String[] args) throws IOException {
-		ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
+		String[] conf = { "classpath:conf1.xml", "classpath:conf2.xml" };
+		ctx = new GenericXmlApplicationContext(conf);
+		
 		BufferedReader reader = 
 				new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
